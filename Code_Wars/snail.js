@@ -1,17 +1,15 @@
 snail = function(arr) {
+     console.log('arg passed', arr)
      const flattenArr = []
      let XTrackerLeft = 0
-     let XTrackerRight = arr[0].length // === 0 ? 0 : arr[0].length
+     let XTrackerRight = arr[0].length 
      let YTrackerUp = 0
      let YTrackerDown = arr.length
      let x = 0
      let y = 0
-     console.log(arr)
-     console.log('xL', XTrackerLeft, 'xR', XTrackerRight, 'yU', YTrackerUp, 'yD', YTrackerDown)
      while (YTrackerUp < YTrackerDown) {
           // Go Right
           while (x < XTrackerRight) {
-               console.log(`arr[${y}][${x}]: ${arr[y][x]}`)
                flattenArr.push(arr[y][x])
                x++
           }
@@ -19,7 +17,6 @@ snail = function(arr) {
           y++
           // Go Down
           while (y < YTrackerDown) {
-               console.log(`arr[${y}][${x}]: ${arr[y][x]}`)
                flattenArr.push(arr[y][x])
                y++
           }
@@ -27,7 +24,6 @@ snail = function(arr) {
           x--
           // Go Left
           while (x >= XTrackerLeft) {
-               console.log(`arr[${y}][${x}]: ${arr[y][x]}`)
                flattenArr.push(arr[y][x])
                x--
           }
@@ -35,7 +31,6 @@ snail = function(arr) {
           y--
           // Go Up
           while (y > YTrackerUp + 1) {
-               console.log(`arr[${y}][${x}]: ${arr[y][x]}`)
                flattenArr.push(arr[y][x])
                y--
           }
@@ -45,6 +40,7 @@ snail = function(arr) {
           XTrackerRight--
      }
      return console.log('return', flattenArr)
+     return flattenArr
 }
 
 
