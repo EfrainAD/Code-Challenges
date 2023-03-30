@@ -4,7 +4,7 @@ const isOppositeDirection = (x, y) => {
           case "NORTH":
                return y === "SOUTH"
                break;
-          case "WEST":
+          case "WEST": 
                return y === "EAST"
                break;
           case "SOUTH":
