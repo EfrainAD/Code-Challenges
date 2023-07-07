@@ -1,22 +1,35 @@
 // Helper Function
+const isLetterLowercase = (charCode) => charCode >= 97 && charCode <= 122
+const isLetterUpercase = (charCode) => charCode >= 65 && charCode <= 90
+
+const shift = (charCode, shiftKey) => {
+   const numOfLetters = 26
+   charCode += shiftKey
+   charCode %= numOfLetters
+   return charCode
+}
+
 const rot13Letter = (char) => {
    // a - z is 97 - 122
-   let code = char.charCodeAt(0)
-   if (code >= 97 && code <= 122) {
-      code -= 97
-      code += 13
-      code %= 26
-      code += 97
-   } else if (code >= 65 && code <= 90) {
-      // A - Z is 65 - 90
-      code -= 65
-      code += 13
-      code %= 26
-      code += 65
+   // A - Z is 65 - 90
+
+   let charCode = char.charCodeAt(0)
+   const shiftKey = 13
+
+   let chop
+   if (isLetterLowercase(charCode)) {
+      chop = 97
+   } else if (isLetterUpercase(charCode)) {
+      chop = 65
    } else {
       return char
    }
-   return String.fromCharCode(code)
+
+   charCode -= chop
+   charCode = shift(charCode, shiftKey)
+   charCode += chop
+
+   return String.fromCharCode(charCode)
 }
 
 // Main Function
