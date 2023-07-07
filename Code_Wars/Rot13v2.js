@@ -9,7 +9,7 @@ const getEncriptKey = (key) => {
    // Sift upercase letters
    const alphabetBig = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
    const newEndBig = alphabetBig.slice(0, key)
-   const newFrontBig = alphabetBig.slice(13)
+   const newFrontBig = alphabetBig.slice(key)
    const answerKeyBig = newFrontBig + newEndBig
 
    // Create the final answer key
