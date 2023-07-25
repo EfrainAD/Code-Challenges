@@ -1,43 +1,48 @@
-// var removeDuplicates = function (nums) {
-//    const newNums = []
-
-//    // add unique numbers to the new nums array
-//    nums.forEach((num, index) => {
-//       if (num !== nums[index + 1]) newNums.push(num)
-//    })
-
-//    // get the number of unique numbers
-//    const uniqueNums = newNums.length
-
-//    // Add padding at the end of the array
-//    while (newNums.length !== nums.length) {
-//       newNums.push('_')
-//    }
-//    console.log(newNums)
-//    console.log('Output:', uniqueNums, 'nums =', +newNums)
-//    return uniqueNums
-// }
-
-var removeDuplicates = function (nums) {
-   const originalLength = nums.length
+const removeDuplicates = function (nums) {
+   let slow = 0 // Index
    const padding = '_'
 
-   // Remove duplicates
-   nums.forEach((num, index, nums) => {
-      const currNum = num
-      let i = index
-      while (currNum === nums[i + 1]) i++
-      const needToRemove = i - index
-      nums.splice(index, needToRemove)
-   })
+   // [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+   // [0, 1, 1, 1, 1, 2, 2, 3, 3, 4]
+   // [0, 1, 2, 1, 1, 2, 2, 3, 3, 4]
+   // [0, 1, 2, 3, 1, 2, 2, 3, 3, 4]
+   // [0, 1, 2, 3, 4, 2, 2, 3, 3, 4]
+   for (let fast = 1; fast < nums.length; fast++) {
+      if (nums[slow] !== nums[fast]) {
+         slow++
+         nums[slow] = nums[fast]
+      }
+   }
 
-   const unqueNums = nums.length
+   const uniqueNums = slow + 1
 
-   // Add padding
-   while (nums.length !== originalLength) nums.push(padding)
+   for (let i = uniqueNums; i < nums.length; i++) {
+      nums[i] = padding
+   }
 
-   return unqueNums
+   return uniqueNums
 }
+
+// var removeDuplicates = function (nums) {
+//    const originalLength = nums.length
+//    const padding = '_'
+
+//    // Remove duplicates
+//    nums.forEach((num, index, nums) => {
+//       const currNum = num
+//       let i = index
+//       while (currNum === nums[i + 1]) i++
+//       const needToRemove = i - index
+//       nums.splice(index, needToRemove)
+//    })
+
+//    const unqueNums = nums.length
+
+//    // Add padding
+//    while (nums.length !== originalLength) nums.push(padding)
+
+//    return unqueNums
+// }
 
 console.log(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]) === 5)
 //5, nums = [0,1,2,3,4,_,_,_,_,_]
