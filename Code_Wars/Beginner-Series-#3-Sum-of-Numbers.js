@@ -1,6 +1,7 @@
 function getSum(a, b) {
    let sum = 0
 
+   // Flip if it's not in order, smallest to largest
    if (a > b) {
       ;[a, b] = [b, a]
    }
