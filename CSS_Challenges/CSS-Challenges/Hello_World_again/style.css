@@ -1,0 +1,17 @@
+.box {
+   width: 280px;
+   height: 280px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-family: 'Inconsolata', monospace;
+   font-size: 28px;
+   border: 1px solid #c39f76;
+   box-sizing: border-box;
+}
+
+/* My Part */
+.box::before {
+   content: 'Hello\aWorld';
+   white-space: pre;
+}
