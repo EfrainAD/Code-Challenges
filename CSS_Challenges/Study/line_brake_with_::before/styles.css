@@ -1,0 +1,14 @@
+#content1::after {
+   content: '\a';
+   white-space: pre;
+}
+
+/* 
+white-space
+   pre
+      Sequences of white space are preserved. Lines are only broken at newline characters in the source and at <br> elements.
+
+      \a is like \n in js.
+
+sourse: https://www.scaler.com/topics/css-line-break/
+*/
