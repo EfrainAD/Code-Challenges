@@ -33,15 +33,15 @@ function main() {
    let numberOfSwaps = 0
 
    for (let i = 0; i < n; i++) {
-      let swapThisRound = false
-      for (let j = 0; j < n - 1; j++) {
+      let swapped = false
+      for (let j = 0; j < n - i - 1; j++) {
          if (a[j] > a[j + 1]) {
             ;[a[j], a[j + 1]] = [a[j + 1], a[j]]
             numberOfSwaps++
-            swapThisRound = true
+            swapped = true
          }
       }
-      if (!swapThisRound) break
+      if (!swapped) break
    }
 
    console.log(`Array is sorted in ${numberOfSwaps} swaps.`)
